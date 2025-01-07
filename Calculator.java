@@ -40,7 +40,7 @@ public class Calculator {
                 System.out.println("결과: " + result);
             } catch (InputMismatchException e) {
                 System.out.println("숫자만 입력하세요.");
-                sc.nextLine(); // 이거 안 넣으면 
+                sc.nextLine(); // 이거 안 넣으면 이상한게 입력됨
             } catch (ArithmeticException e) {
                 System.out.println(e.getMessage());
             } catch (NumberFormatException e) {

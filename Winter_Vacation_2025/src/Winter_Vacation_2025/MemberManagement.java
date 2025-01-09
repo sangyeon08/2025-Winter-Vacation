@@ -28,7 +28,7 @@ public class MemberManagement {
 		String gender = sc.nextLine();
 		System.out.print("나이: ");
 		int age = sc.nextInt();
-		sc.nextLine(); // 버퍼 비우기
+		sc.nextLine();
 		System.out.print("주소: ");
 		String address = sc.nextLine();
 
@@ -50,21 +50,22 @@ public class MemberManagement {
 		System.out.println("해당 회원을 찾을 수 없습니다.");
 	}
 
+	//수정할 때
 	public void updateMember(String name, String key, String value) {
 		for (Member member : members) {
 			if (member.name.equals(name)) {
 				switch (key) {
-				case "gender":
+				case "성별":
 					member.gender = value;
 					break;
-				case "age":
+				case "나이":
 					member.age = Integer.parseInt(value);
 					break;
-				case "address":
+				case "주소":
 					member.address = value;
 					break;
 				default:
-					System.out.println("잘못된 키입니다.");
+					System.out.println("잘못된 선택입니다.");
 				}
 				System.out.println(name + "님의 정보가 수정되었습니다.");
 				return;
@@ -73,6 +74,7 @@ public class MemberManagement {
 		System.out.println("해당 회원을 찾을 수 없습니다.");
 	}
 
+	//삭제할 때 모든 정보 돌아가며 지우기
 	public void deleteMember(String name) {
 		for (int i = 0; i < members.size(); i++) {
 			if (members.get(i).name.equals(name)) {
@@ -84,7 +86,9 @@ public class MemberManagement {
 		System.out.println("해당 회원을 찾을 수 없습니다.");
 	}
 
+	//회원 정보 다 출력
 	public void printAllMembers() {
+		System.out.println("------------------------");
 		for (Member member : members) {
 			System.out.println("이름: " + member.name);
 			System.out.println("성별: " + member.gender);
@@ -99,16 +103,18 @@ public class MemberManagement {
 		Scanner sc = new Scanner(System.in);
 
 		while (true) {
-			System.out.println("1. 회원 가입");
-			System.out.println("2. 회원 검색");
-			System.out.println("3. 회원 정보 수정");
-			System.out.println("4. 회원 삭제");
-			System.out.println("5. 회원 목록");
-			System.out.println("0. 프로그램 종료");
+			System.out.print("1.  회원 가입 ");
+			System.out.print("2.  회원 검색 ");
+			System.out.print("3.  회원 정보 수정 ");
+			System.out.print("4.  회원 삭제 ");
+			System.out.print("5.  회원 목록 ");
+			System.out.println("0.  프로그램 종료 ");
 			System.out.print("메뉴 선택: ");
 			int choice = sc.nextInt();
 			sc.nextLine();
 
+			
+			//수정할 때 선택사항 갈무리
 			switch (choice) {
 			case 1:
 				manager.addMember();
@@ -121,7 +127,7 @@ public class MemberManagement {
 			case 3:
 				System.out.print("수정할 회원 이름: ");
 				String updateName = sc.nextLine();
-				System.out.print("수정할 항목 (gender, age, address): ");
+				System.out.print("수정할 항목 (성별, 나이, 주소): ");
 				String updateKey = sc.nextLine();
 				System.out.print("새로운 값: ");
 				String updateValue = sc.nextLine();
